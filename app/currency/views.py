@@ -1,4 +1,4 @@
-from django.http.response import HttpResponse, HttpResponseRedirect, Http404
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
 from currency.forms import SourceForm
