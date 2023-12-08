@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{%  block title %}
+    Source List
+{% endblock title %}
+
+{% block content %}
+
+    <a href="/source/create/">Create</a><br>
+
+{% for source in sources %}
+    id: {{ source.id }}
+    source_url: {{ source.source_url }}
+    name: {{ source.name }}
+    <a href="/source/update/{{ source.id }}/">Edit</a>
+    <a href="/source/delete/{{ source.id }}/">Delete</a>
+    <a href="/source/details/{{ source.id }}/">Details</a>
+    <br>
+{% endfor %}
+
+{% endblock content %}
+

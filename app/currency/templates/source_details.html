@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{%  block title %}
+    Source List
+{% endblock title %}
+
+{% block content %}
+
+<table>
+  <tr style="background-color: grey">
+    <th> id </th>
+    <th> source_url </th>
+    <th> name </th>
+  </tr>
+  <tr>
+    <td>{{ source.id }}</td>
+    <td>{{ source.source_url }}</td>
+    <td>{{ source.name }}</td>
+  </tr>
+</table>
+{% endblock content %}
