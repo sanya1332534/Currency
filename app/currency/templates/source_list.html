@@ -6,15 +6,15 @@
 
 {% block content %}
 
-    <a href="/source/create/">Create</a><br>
+<a href="{% url 'currency:source-create' %}">Create</a><br>
 
-{% for source in sources %}
+{% for source in object_list %}
     id: {{ source.id }}
     source_url: {{ source.source_url }}
     name: {{ source.name }}
-    <a href="/source/update/{{ source.id }}/">Edit</a>
-    <a href="/source/delete/{{ source.id }}/">Delete</a>
-    <a href="/source/details/{{ source.id }}/">Details</a>
+    <a href="{% url 'currency:source-update' source.id %}">Edit</a>
+    <a href="{% url 'currency:source-delete' source.id %}">Delete</a>
+    <a href="{% url 'currency:source-details' source.id %}">Details</a>
     <br>
 {% endfor %}
 
