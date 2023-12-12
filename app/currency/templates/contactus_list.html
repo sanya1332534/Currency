@@ -6,23 +6,17 @@
 
 {% block content %}
 
+<a href="{% url 'currency:contactus-create' %}">Create</a><br>
 
-<table>
-  <tr style="background-color: grey">
-    <th> id </th>
-    <th> email_from </th>
-    <th> subject </th>
-    <th> message </th>
-  </tr>
-  {% for contact_us in feedbacks %}
-    <tr>
-      <td>{{ contact_us.id }}</td>
-      <td>{{ contact_us.email_from }}</td>
-      <td>{{ contact_us.subject }}</td>
-      <td>{{ contact_us.message }}</td>
-    </tr>
-  {% endfor %}
-</table>
-
+{% for contactus in object_list %}
+    Id: {{ contactus.id }}
+    email_from: {{ contactus.email_from }}
+    subject: {{ contactus.subject }}
+    message : {{ contactus.message }}
+    <a href="{% url 'currency:contactus-update' contactus.id %}">Edit</a>
+    <a href="{% url 'currency:contactus-delete' contactus.id %}">Delete</a>
+    <a href="{% url 'currency:contactus-details' contactus.id %}">Details</a>
+    <br>
+{% endfor %}
 
 {% endblock content %}
