@@ -67,4 +67,3 @@ class SourceAdmin(ImportExportModelAdmin):
         'source_url',
         'name',
     )
-
