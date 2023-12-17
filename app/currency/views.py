@@ -49,11 +49,11 @@ class TimeItMixin:
 
     def dispatch(self, request, *args, **kwargs):
         # print('BEFORE IN VIEW')
-        start = time()
+        # start = time()
 
         response = super().dispatch(request, *args, **kwargs)
 
-        end = time()
+        # end = time()
         # print(f'AFTER IN VIEW {end - start}')
 
         return response
