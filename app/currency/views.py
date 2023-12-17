@@ -48,13 +48,13 @@ class ContactUsListView(ListView):
 class TimeItMixin:
 
     def dispatch(self, request, *args, **kwargs):
-        print('BEFORE IN VIEW')
+        # print('BEFORE IN VIEW')
         start = time()
 
         response = super().dispatch(request, *args, **kwargs)
 
         end = time()
-        print(f'AFTER IN VIEW {end - start}')
+        # print(f'AFTER IN VIEW {end - start}')
 
         return response
 
@@ -146,5 +146,3 @@ class SourceDetailView(DetailView):
 
 class IndexView(TemplateView):
     template_name = 'index.html'
-
-
