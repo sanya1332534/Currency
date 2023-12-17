@@ -1,3 +1,6 @@
+from time import time
+
+from django.core.mail import send_mail
 from django.views.generic import (
     ListView, CreateView, UpdateView,
     DeleteView, DetailView, TemplateView
@@ -42,10 +45,56 @@ class ContactUsListView(ListView):
     template_name = 'contactus_list.html'
 
 
-class ContactUsCreateView(CreateView):
-    form_class = ContactUsForm
-    success_url = reverse_lazy('currency:contactus-list')
+class TimeItMixin:
+
+    def dispatch(self, request, *args, **kwargs):
+        print('BEFORE IN VIEW')
+        start = time()
+
+        response = super().dispatch(request, *args, **kwargs)
+
+        end = time()
+        print(f'AFTER IN VIEW {end - start}')
+
+        return response
+
+
+class ContactUsCreateView(TimeItMixin, CreateView):
+    model = ContactUs
     template_name = 'contactus_create.html'
+    success_url = reverse_lazy('currency:index')
+    fields = (
+        'name',
+        'email',
+        'subject',
+        'body',
+    )
+
+    def _send_email(self):
+        from django.conf import settings
+        recipient = settings.DEFAULT_FROM_EMAIL
+        subject = 'User contact us'
+        body = f'''
+                Name: {self.object.name}
+                Email: {self.object.email}
+                Subject: {self.object.subject}
+                Body: {self.object.body}
+                '''
+
+        send_mail(
+            subject,
+            body,
+            recipient,
+            [recipient],
+            fail_silently=False,
+        )
+
+    def form_valid(self, form):
+        redirect = super().form_valid(form)
+
+        self._send_email()
+
+        return redirect
 
 
 class ContactUsUpdateView(UpdateView):
@@ -97,3 +146,5 @@ class SourceDetailView(DetailView):
 
 class IndexView(TemplateView):
     template_name = 'index.html'
+
+

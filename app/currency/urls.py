@@ -1,6 +1,7 @@
 from django.urls import path
 
 from currency.views import (
+    IndexView,
     RateListView,
     RateCreateView,
     RateUpdateView,
@@ -37,4 +38,5 @@ urlpatterns = [
     path('contactus/update/<int:pk>/', ContactUsUpdateView.as_view(), name='contactus-update'),
     path('contactus/delete/<int:pk>/', ContactUsDeleteView.as_view(), name='contactus-delete'),
     path('contactus/details/<int:pk>/', ContactUsDetailView.as_view(), name='contactus-details'),
+    path('', IndexView.as_view(), name='index'),
 ]

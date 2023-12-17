@@ -34,16 +34,16 @@ class RateAdmin(ImportExportModelAdmin):
 class ContactUsAdmin(ImportExportModelAdmin):
     list_display = (
         'id',
-        'email_from',
+        'email',
         'subject',
-        'message',
+        'body',
     )
     search_fields = (
-        'email_from',
+        'email',
         'subject',
     )
     readonly_fields = (
-        'email_from',
+        'email',
     )
 
     def has_delete_permission(self, request, obj=None):
