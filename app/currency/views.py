@@ -1,5 +1,3 @@
-from time import time
-
 from django.core.mail import send_mail
 from django.views.generic import (
     ListView, CreateView, UpdateView,
