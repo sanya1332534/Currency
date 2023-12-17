@@ -10,9 +10,9 @@
 
 {% for contactus in object_list %}
     Id: {{ contactus.id }}
-    email_from: {{ contactus.email_from }}
+    email: {{ contactus.email }}
     subject: {{ contactus.subject }}
-    message : {{ contactus.message }}
+    body : {{ contactus.body }}
     <a href="{% url 'currency:contactus-update' contactus.id %}">Edit</a>
     <a href="{% url 'currency:contactus-delete' contactus.id %}">Delete</a>
     <a href="{% url 'currency:contactus-details' contactus.id %}">Details</a>
