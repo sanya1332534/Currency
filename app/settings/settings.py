@@ -149,7 +149,7 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'sarinoleks@gmail.com'
-EMAIL_HOST_PASSWORD = 'scjasucayidzrvir'
+EMAIL_HOST_PASSWORD = '****************'
 
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('login')
