@@ -12,7 +12,7 @@ from currency.models import Rate, ContactUs, Source
 
 
 class RateListView(ListView):
-    queryset = Rate.objects.all()
+    queryset = Rate.objects.all().select_related('source')
     template_name = 'rate_list.html'
 
 
