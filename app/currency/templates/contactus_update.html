@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {% block title %}Update ContactUs{% endblock title %}
 
 {% block content %}
     Update ContactUs Form
 
+    {% load crispy_forms_tags %}
+
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Submit</button>
     </form>
 
 {% endblock content %}
