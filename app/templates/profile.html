@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
 
 {% block title %}Profile{% endblock %}
 
@@ -6,12 +8,15 @@
 
     <h1>Profile</h1>
 
-    <form method="post">
+    <img style="height: 100px; width:100px" src="{{ user.avatar_url }}" alt="avatar">
+    {% load crispy_forms_tags %}
+
+    <form method="post" enctype="multipart/form-data">
 
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
 
-    <button type="submit">Update</button>
+    <button type="submit" class="btn btn-success">Update</button>
     </form>
 
 {% endblock %}
