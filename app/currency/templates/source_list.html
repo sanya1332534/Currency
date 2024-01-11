@@ -1,22 +1,50 @@
 {% extends 'base.html' %}
 
-{%  block title %}
-    Source List
+{% block title %}
+    Sources List
 {% endblock title %}
 
 {% block content %}
 
 <a href="{% url 'currency:source-create' %}">Create</a><br>
 
-{% for source in object_list %}
-    id: {{ source.id }}
-    source_url: {{ source.source_url }}
-    name: {{ source.name }}
-    <a href="{% url 'currency:source-update' source.id %}">Edit</a>
-    <a href="{% url 'currency:source-delete' source.id %}">Delete</a>
-    <a href="{% url 'currency:source-details' source.id %}">Details</a>
-    <br>
-{% endfor %}
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Source URL</th>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for source in object_list %}
+                <tr>
+                    <th scope="row">{{ source.id }}</th>
+                    <td>{{ source.source_url }}</td>
+                    <td>{{ source.name }}</td>
+                    <td>
+                        {% if request.user.is_authenticated %}
+                            <div class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Actions
+                                </a>
 
+                                <div class="dropdown-menu">
+                                    {% if request.user.is_superuser %}
+                                        <a class="dropdown-item" href="{% url 'currency:source-update' source.id %}">Edit</a>
+                                        <a class="dropdown-item" href="{% url 'currency:source-delete' source.id %}">Delete</a>
+                                    {% endif %}
+                                    <a class="dropdown-item" href="{% url 'currency:source-details' source.id %}">Details</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock content %}
-

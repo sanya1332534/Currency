@@ -1,21 +1,28 @@
 {% extends 'base.html' %}
 
 {%  block title %}
-    Source List
+    Source details
 {% endblock title %}
 
 {% block content %}
-
-<table>
-  <tr style="background-color: grey">
-    <th> id </th>
-    <th> source_url </th>
-    <th> name </th>
-  </tr>
-  <tr>
-    <td>{{ source.id }}</td>
-    <td>{{ source.source_url }}</td>
-    <td>{{ source.name }}</td>
-  </tr>
-</table>
+<div class="container">
+    {% load crispy_forms_tags %}
+    <img style="height: 100px; width:100px" src="{{ object.logo_url }}" alt="Logo">
+    <table class="table table-striped">
+        <thead>
+            <tr style="background-color: grey">
+                <th> id </th>
+                <th> source_url </th>
+                <th> name </th>
+            </tr>
+        </thead>
+        <tbody>
+              <tr>
+                <td>{{ source.id }}</td>
+                <td>{{ source.source_url }}</td>
+                <td>{{ source.name }}</td>
+              </tr>
+        </tbody>
+    </table>
+</div>
 {% endblock content %}
