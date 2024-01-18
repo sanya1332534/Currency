@@ -1,5 +1,4 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from datetime import datetime, timedelta
 
 from django.views.generic import (
     ListView, CreateView, UpdateView,
