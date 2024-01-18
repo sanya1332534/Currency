@@ -8,6 +8,8 @@ django-storages
 boto3
 django-crispy-forms==2.1
 crispy-bootstrap4
+Celery
+requests
 
 flake8
 flake8-builtins
