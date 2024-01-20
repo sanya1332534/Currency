@@ -34,7 +34,7 @@ def parse_privatbank():
 
         currency_type = available_currency_types[currency_type]
 
-        check_last_rate(buy, sell, currency_type, source)
+        check_or_create_rate(buy, sell, currency_type, source)
 
 
 @shared_task
@@ -63,10 +63,10 @@ def parse_monobank():
         else:
             continue
 
-        check_last_rate(buy, sell, currency_type, source)
+        check_or_create_rate(buy, sell, currency_type, source)
 
 
-def check_last_rate(buy, sell, currency_type, source):
+def check_or_create_rate(buy, sell, currency_type, source):
 
     last_rate = Rate.objects.filter(source=source, currency_type=currency_type).order_by('-created').first()
 
