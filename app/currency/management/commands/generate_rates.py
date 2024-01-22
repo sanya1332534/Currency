@@ -8,7 +8,7 @@ from currency.choices import CurrencyTypeChoices
 
 
 class Command(BaseCommand):
-    help = "Generates 500 random rates"
+    help = "Generates 500 random rates" # NOQA
 
     def handle(self, *args, **options):
         source, _ = Source.objects.get_or_create(
