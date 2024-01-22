@@ -17,7 +17,8 @@ class UserSignUpForm(forms.ModelForm):
         fields = (
             'email',
             'password1',
-            'password2'
+            'password2',
+            'phone',
         )
 
     def clean(self):

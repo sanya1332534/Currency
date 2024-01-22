@@ -1,10 +1,20 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {% block title %}
     Rates List
 {% endblock title %}
 
 {% block content %}
+    {% load crispy_forms_tags %}
+    <div class="row">
+    <div class="col-12">
+        <form method="get">
+        {{ filter.form|crispy }}
+        <input type="submit"/>
+        </form>
+    </div>
+    </div>
 
 <a href="{% url 'currency:rate-create' %}">Create</a><br>
 
@@ -21,7 +31,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for rate in object_list %}
+            {% for rate in page_obj %}
                 <tr>
                     <th scope="row">{{ rate.id }}</th>
                     <td>{{ rate.buy }}</td>
@@ -51,5 +61,9 @@
             </tbody>
         </table>
     </div>
-
+    <div class="row">
+        <div class="col-12">
+            {% include 'includes/pagination.html' %}
+        </div>
+    </div>
 {% endblock content %}
