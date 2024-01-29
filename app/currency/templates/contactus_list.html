@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {%  block title %}
     ContactUs List
 {% endblock title %}
 
 {% block content %}
+<div class="row">
+    <div class="col-12">
+        <form method="get">
+        {{ filter.form|crispy }}
+        <input type="submit"/>
+        </form>
+    </div>
+</div>
+
 
 <a href="{% url 'currency:contactus-create' %}">Create</a><br>
 
-{% for contactus in object_list %}
+{% for contactus in page_obj %}
     Id: {{ contactus.id }}
     email: {{ contactus.email }}
     subject: {{ contactus.subject }}
@@ -18,5 +28,9 @@
     <a href="{% url 'currency:contactus-details' contactus.id %}">Details</a>
     <br>
 {% endfor %}
-
+    <div class="row">
+        <div class="col-12">
+            {% include 'includes/pagination.html' %}
+        </div>
+    </div>
 {% endblock content %}
