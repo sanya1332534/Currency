@@ -55,4 +55,3 @@ class ContactUsViewSet(ModelViewSet):
     )
     search_fields = ['name', 'subject', 'body', 'email']
     ordering_fields = ('name', 'created', 'subject')
-
