@@ -1,4 +1,5 @@
 import re
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.views.generic import (
@@ -79,13 +80,7 @@ class ContactUsListView(FilterView):
 class TimeItMixin:
 
     def dispatch(self, request, *args, **kwargs):
-        # print('BEFORE IN VIEW')
-        # start = time()
-
         response = super().dispatch(request, *args, **kwargs)
-
-        # end = time()
-        # print(f'AFTER IN VIEW {end - start}')
 
         return response
 
@@ -101,27 +96,27 @@ class ContactUsCreateView(TimeItMixin, CreateView):
         'body',
     )
 
-    def _send_email(self):
-        subject = 'User contact us'
-        body = f'''
-                Name: {self.object.name}
-                Email: {self.object.email}
-                Subject: {self.object.subject}
-                Body: {self.object.body}
-                '''
-        send_email_in_background.apply_async(
-            kwargs={
-                'subject': subject,
-                'body': body
-            }
-        )
-
     def form_valid(self, form):
         redirect = super().form_valid(form)
-
-        self._send_email()
+        send_email(self.object)
 
         return redirect
+
+
+def send_email(contact_us):
+    subject = 'User contact us'
+    body = f'''
+            Name: {contact_us.name}
+            Email: {contact_us.email}
+            Subject: {contact_us.subject}
+            Body: {contact_us.body}
+            '''
+    send_email_in_background.apply_async(
+        kwargs={
+            'subject': subject,
+            'body': body
+        }
+    )
 
 
 class ContactUsUpdateView(UpdateView):

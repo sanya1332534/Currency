@@ -11,6 +11,11 @@ crispy-bootstrap4
 Celery
 requests
 django-filter
+djangorestframework
+djangorestframework-xml
+djangorestframework-yaml
+djangorestframework-simplejwt
+drf-yasg
 
 flake8
 flake8-builtins
