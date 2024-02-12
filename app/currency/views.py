@@ -77,15 +77,7 @@ class ContactUsListView(FilterView):
         return context
 
 
-class TimeItMixin:
-
-    def dispatch(self, request, *args, **kwargs):
-        response = super().dispatch(request, *args, **kwargs)
-
-        return response
-
-
-class ContactUsCreateView(TimeItMixin, CreateView):
+class ContactUsCreateView(CreateView):
     model = ContactUs
     template_name = 'contactus_create.html'
     success_url = reverse_lazy('currency:index')

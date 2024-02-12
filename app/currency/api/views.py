@@ -27,7 +27,7 @@ class RateViewSet(ModelViewSet):
     throttle_classes = (RateThrottle,)
 
 
-class SourceViewSet(ReadOnlyModelViewSet):
+class SourceViewSet(ModelViewSet):
     queryset = Source.objects.all()
     serializer_class = SourceSerializer
     renderer_classes = (JSONRenderer, XMLRenderer, YAMLRenderer)

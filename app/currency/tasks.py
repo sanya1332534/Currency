@@ -48,7 +48,7 @@ def parse_monobank():
     rates = response.json()
 
     available_currency_types = {
-        840: CurrencyTypeChoices.USD,  # numbers
+        840: CurrencyTypeChoices.USD,
         978: CurrencyTypeChoices.EUR
     }
 
@@ -58,8 +58,8 @@ def parse_monobank():
 
         if currency_code_a in available_currency_types and currency_code_b == 980:
             currency_type = available_currency_types[currency_code_a]
-            buy = to_2_places_decimal(rate['rateBuy'])
-            sell = to_2_places_decimal(rate['rateSell'])
+            buy = to_2_places_decimal(str(rate['rateBuy']))
+            sell = to_2_places_decimal(str(rate['rateSell']))
         else:
             continue
 
