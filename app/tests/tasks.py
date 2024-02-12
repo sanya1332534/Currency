@@ -87,4 +87,3 @@ def test_parse_monobank_prevent_duplicates(mocker):
 
     assert Rate.objects.count() == initial_count
     assert requests_get_mock.call_count == 1
-

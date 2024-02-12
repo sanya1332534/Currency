@@ -14,8 +14,3 @@ def lower_user_email(instance, **kwargs):
 @receiver(pre_save, sender=User)
 def fix_user_phone(instance, **kwargs):
     instance.phone = re.sub(r'\D', '', instance.phone)
-
-
-@receiver(post_save, sender=User)
-def lower_user_email(instance, **kwargs):
-    pass

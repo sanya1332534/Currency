@@ -10,4 +10,3 @@ def test_index(client):
 def test_get_rate_list(client):
     response = client.get(reverse('currency:rate-list'))
     assert response.status_code == 200
-    
