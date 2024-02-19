@@ -1,4 +1,4 @@
-from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.renderers import JSONRenderer
 from rest_framework.filters import OrderingFilter
 from rest_framework_xml.renderers import XMLRenderer
@@ -27,7 +27,7 @@ class RateViewSet(ModelViewSet):
     throttle_classes = (RateThrottle,)
 
 
-class SourceViewSet(ReadOnlyModelViewSet):
+class SourceViewSet(ModelViewSet):
     queryset = Source.objects.all()
     serializer_class = SourceSerializer
     renderer_classes = (JSONRenderer, XMLRenderer, YAMLRenderer)
