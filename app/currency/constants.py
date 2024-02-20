@@ -1,3 +1,5 @@
 PRIVATBANK_CODE_NAME = 'privat'
 
 MONOBANK_CODE_NAME = 'mono'
+
+LATEST_RATES_CACHE_KEY = 'latest_rates'
