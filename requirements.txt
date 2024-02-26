@@ -18,6 +18,7 @@ djangorestframework-simplejwt
 drf-yasg
 model-bakery
 pymemcache
+gunicorn
 
 flake8
 flake8-builtins
