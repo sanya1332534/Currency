@@ -5,3 +5,4 @@ __pycache__
 *.db
 /app/celerybeat-schedule
 .coverage
+local.py
