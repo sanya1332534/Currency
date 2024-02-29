@@ -19,6 +19,8 @@ drf-yasg
 model-bakery
 pymemcache
 gunicorn
+django-environ
+flower
 
 flake8
 flake8-builtins

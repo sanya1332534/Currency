@@ -6,3 +6,4 @@ __pycache__
 /app/celerybeat-schedule
 .coverage
 local.py
+.env
