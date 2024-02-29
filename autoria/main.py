@@ -78,7 +78,7 @@ class SQLiteWriter:
 
     def write_data(self, data):
         self.cursor.execute('''
-                INSERT INTO cars (id, mark, model, year, link, price) 
+                INSERT INTO cars (id, mark, model, year, link, price)
                 VALUES (?, ?, ?, ?, ?, ?)
                 ON CONFLICT(id) DO UPDATE SET
                     mark=excluded.mark,
@@ -104,7 +104,6 @@ def main():
 
     while True:
         random_sleep()
-        print(f"Processing page {page}!")
 
         page_content = get_page_content(page)
 
@@ -113,7 +112,6 @@ def main():
         ticket_items = search_results.find_all("section", class_="ticket-item")
 
         if not ticket_items:
-            print(f"No more items on page {page}!")
             break
 
         for ticket_item in ticket_items:
